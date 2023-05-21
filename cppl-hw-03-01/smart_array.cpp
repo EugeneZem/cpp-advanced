@@ -2,8 +2,6 @@
 #include <iostream>
 #include <string>
 
-
-
 smart_array::smart_array(int item)
 {
 	s_arr = new int[item];

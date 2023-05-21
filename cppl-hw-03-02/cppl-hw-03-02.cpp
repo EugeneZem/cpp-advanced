@@ -19,6 +19,10 @@ int main()
 
 		arr = new_array;
 
+		//smart_array arr2(arr);
+		//std::cout << arr2.get_element(0) << std::endl;
+		//std::cout << arr2.get_element(1) << std::endl;
+
 		std::cout << arr.get_element(0) << std::endl;
 		std::cout << arr.get_element(1) << std::endl;
 

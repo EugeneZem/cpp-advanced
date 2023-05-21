@@ -73,6 +73,22 @@ int smart_array::get_size()
 
 smart_array& smart_array::operator = (const smart_array& r_arr)
 {
+	if (this != &r_arr)
+	{
+		this->size = r_arr.size;
+		this->current = r_arr.current;
+		this->s_arr = new int[r_arr.size];
+
+		for (int i = 0; i < current; i++)
+		{
+			this->s_arr[i] = r_arr.s_arr[i];
+		}
+	}
+	return *this;
+}
+
+smart_array::smart_array(const smart_array& r_arr)
+{
 	this->size = r_arr.size;
 	this->current = r_arr.current;
 	this->s_arr = new int[r_arr.size];
@@ -81,5 +97,4 @@ smart_array& smart_array::operator = (const smart_array& r_arr)
 	{
 		this->s_arr[i] = r_arr.s_arr[i];
 	}
-	return *this;
 }

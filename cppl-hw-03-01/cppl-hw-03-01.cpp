@@ -16,6 +16,8 @@ int main()
 		arr.add_element(15);
 		arr.add_element(18);
 
+	//	smart_array qw = arr;
+
 		std::cout << arr.get_element(0) << std::endl;
 		std::cout << arr.get_element(1) << std::endl;
 		std::cout << arr.get_element(2) << std::endl;
