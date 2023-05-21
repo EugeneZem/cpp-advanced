@@ -12,6 +12,32 @@ public:
         }
     }
 
+    ~table()
+    {
+        for (int a = 0; a < _col; ++a)
+        {
+            delete [] arr[a];
+        }
+        delete [] arr;
+    }
+
+    table& operator = (table rpar)
+    {
+        T** new_arr = new T * [this._col];
+        for (int a = 0; a < this._col; ++a)
+        {
+            new_arr[a] = new T[this._row];
+        }
+        for (int a = 0; a < this._col; ++a)
+        {
+            for (int b = 0; b < this._row; ++b)
+            {
+                new_arr[a][b] = this[a][b];
+            }
+        }
+        return &new_arr;
+    }
+
     const T& operator [] (int i) const
     {
         return arr[i];
@@ -38,4 +64,8 @@ int main()
     test[1][0] = 4;
     std::cout << test[1][0] << std::endl;
     std::cout << test.size() << std::endl;
+
+    auto test2 = test;
+    std::cout << test2[1][0] << std::endl;
+    std::cout << test2.size() << std::endl;
 }
