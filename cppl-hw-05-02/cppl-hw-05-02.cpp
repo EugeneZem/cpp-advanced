@@ -23,16 +23,21 @@ public:
 
     table& operator = (const table& rpar)
     {
-        T new_class = table<T>(rpar._col, rpar._row);
-        
-         for (int a = 0; a < rpar._col; ++a)
+        _col = rpar._col;
+        _row = rpar._row;
+        arr = new T * [_col];
+        for (int a = 0; a < _col; ++a)
+        {
+            arr[a] = new T[_row];
+        }
+        for (int a = 0; a < rpar._col; ++a)
         {
             for (int b = 0; b < rpar._row; ++b)
             {
-                new_class.arr[a][b] = rpar.arr[a][b];
+                arr[a][b] = rpar.arr[a][b];
             }
         }
-        return &new_class;
+        return &this;
     }
 
     const T& operator [] (int i) const
@@ -78,7 +83,7 @@ int main()
     std::cout << test.size() << std::endl;
 
     auto test2 = test;
-    std::cout << test2[1][0] << std::endl;
+    std::cout << test2[1][2] << std::endl;
     std::cout << test2.size() << std::endl;
     std::cout << "";
 }
