@@ -71,8 +71,8 @@ public:
     }
 
 private:
-    T** arr = nullptr;
     const int _col, _row;
+    T** arr = nullptr;
 };
 
 int main()
@@ -85,5 +85,4 @@ int main()
     auto test2 = test;
     std::cout << test2[1][2] << std::endl;
     std::cout << test2.size() << std::endl;
-    std::cout << "";
 }
