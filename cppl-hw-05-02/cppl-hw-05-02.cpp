@@ -25,6 +25,13 @@ public:
     {
         _col = rpar._col;
         _row = rpar._row;
+        
+        for (int a = 0; a < _col; ++a)
+        {
+            delete[] arr[a];
+        }
+        delete[] arr;
+
         arr = new T * [_col];
         for (int a = 0; a < _col; ++a)
         {
