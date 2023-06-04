@@ -19,6 +19,5 @@ int main()
 template <typename T> std::vector<T> move_vectors(std::vector<T>& lval)
 {
     std::vector<T> result =  std::move(lval);
-    lval.clear();
     return result;
 }   

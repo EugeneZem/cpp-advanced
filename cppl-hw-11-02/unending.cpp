@@ -22,7 +22,7 @@ unending& unending::operator = (unending&& other) noexcept
 	return *this;
 }
 
-unending::unending(unending&& other) noexcept : val(std::exchange(other.val, nullptr)) {}
+unending::unending(unending&& other) noexcept : val(std::move(other.val)) {}
 
 unending operator + (const unending& val1, const unending& val2)
 {

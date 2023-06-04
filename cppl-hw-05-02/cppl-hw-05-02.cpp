@@ -23,31 +23,34 @@ public:
 
     table& operator = (const table& rpar)
     {
-        _col = rpar._col;
-        _row = rpar._row;
-        
-        for (int a = 0; a < _col; ++a)
+        if (this != &rpar)
         {
-            delete[] arr[a];
-        }
-        delete[] arr;
+            _col = rpar._col;
+            _row = rpar._row;
 
-        arr = new T * [_col];
-        for (int a = 0; a < _col; ++a)
-        {
-            arr[a] = new T[_row];
-        }
-        for (int a = 0; a < rpar._col; ++a)
-        {
-            for (int b = 0; b < rpar._row; ++b)
+            for (int a = 0; a < _col; ++a)
             {
-                arr[a][b] = rpar.arr[a][b];
+                delete[] arr[a];
+            }
+            delete[] arr;
+
+            arr = new T * [_col];
+            for (int a = 0; a < _col; ++a)
+            {
+                arr[a] = new T[_row];
+            }
+            for (int a = 0; a < rpar._col; ++a)
+            {
+                for (int b = 0; b < rpar._row; ++b)
+                {
+                    arr[a][b] = rpar.arr[a][b];
+                }
             }
         }
-        return &this;
+        return *this;
     }
 
-    const T& operator [] (int i) const
+    const T* operator [] (int i) const
     {
         return arr[i];
     }
@@ -78,18 +81,20 @@ public:
     }
 
 private:
-    const int _col, _row;
+    int _col, _row;
     T** arr = nullptr;
 };
 
 int main()
 {
-    auto test = table<int>(2, 3);
+    //auto test = table<int>(2, 3);
+    table <int> test(2, 3);
+    table <int> test2 = test;
     test[1][2] = 4;
     std::cout << test[1][2] << std::endl;
     std::cout << test.size() << std::endl;
 
-    auto test2 = test;
+    test2 = test;
     std::cout << test2[1][2] << std::endl;
     std::cout << test2.size() << std::endl;
 }
