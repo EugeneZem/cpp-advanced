@@ -12,7 +12,13 @@ int main()
     auto result2 = num1 * num2;
     std::cout << num1 << " * " << num2 << " = " << result2 << std::endl;
 
-    auto num3 = unending(std::move(num1));
+    auto num3 = num1;
     auto result3 = num1 * num3;
     std::cout << num1 << " * " << num3 << " = " << result3 << std::endl;
+
+    num3 = unending(result2);
+    std::cout << num3 << " + " << result2 << " = ";
+    result2 = num3 + result2;
+    std::cout << result2 << std::endl;
+
 }

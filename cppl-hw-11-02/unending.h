@@ -6,13 +6,19 @@ class unending
 {
 public:
 	unending();
+
 	unending(const std::string&);
+
 	~unending();
 
 	unending(unending&&) noexcept;
 
+	unending(const unending&);
+
+	unending& operator = (unending&) noexcept;
+
 	unending& operator = (unending&& other) noexcept;
-	
+
 	friend unending operator + (const unending&, const unending&);
 
 	friend unending operator * (unending&, unending&);

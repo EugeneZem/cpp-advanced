@@ -12,8 +12,17 @@ unending::unending(const std::string& let)
 	val = let;
 }
 
-unending::~unending()
+unending::~unending() 
 {
+}
+
+unending::unending(unending&& other) noexcept : val(std::move(other.val)) {}
+
+unending::unending(const unending& other) : val(other.val) {}
+
+unending& unending::operator = (unending& other) noexcept
+{
+	return other;
 }
 
 unending& unending::operator = (unending&& other) noexcept
@@ -21,8 +30,6 @@ unending& unending::operator = (unending&& other) noexcept
 	std::swap(val, other.val);
 	return *this;
 }
-
-unending::unending(unending&& other) noexcept : val(std::move(other.val)) {}
 
 unending operator + (const unending& val1, const unending& val2)
 {
